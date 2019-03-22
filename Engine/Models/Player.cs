@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ namespace Engine.Models
 {
     public class Player : BaseNotificationClass
     {
+
         private string _name;
 
         public string Name
@@ -53,6 +55,13 @@ namespace Engine.Models
         {
             get { return _gold; }
             set { _gold = value; OnPropertyChanged(nameof(Gold)); }
+        }
+
+        public ObservableCollection<GameItem> Inventory { get; set; }
+
+        public Player()
+        {
+            Inventory = new ObservableCollection<GameItem>();
         }
     }
 }

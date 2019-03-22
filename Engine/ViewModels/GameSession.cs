@@ -42,7 +42,7 @@ namespace Engine.ViewModels
                 Level = 1,
                 Gold = 10000
             };
-
+            
             CurrentWorld = WorldFactory.CreateWorld();
 
             CurrentLocation = CurrentWorld.LocationAt(0, 0);
