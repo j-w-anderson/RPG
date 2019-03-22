@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace Engine.Models
 {
-    public class Player : INotifyPropertyChanged
+    public class Player : BaseNotificationClass
     {
         private string _name;
 
         public string Name
         {
             get { return _name; }
-            set { _name = value; OnPropertyChanged("Name"); }
+            set { _name = value; OnPropertyChanged(nameof(Name)); }
         }
 
         private string _characterClass;
@@ -22,21 +22,21 @@ namespace Engine.Models
         public string CharacterClass
         {
             get { return _characterClass; }
-            set { _characterClass = value; OnPropertyChanged("CharacterClass"); }
+            set { _characterClass = value; OnPropertyChanged(nameof(CharacterClass)); }
         }
         private int _hitPoints;
 
         public int HitPoints
         {
             get { return _hitPoints; }
-            set { _hitPoints = value; OnPropertyChanged("HitPoints"); }
+            set { _hitPoints = value; OnPropertyChanged(nameof(HitPoints)); }
         }
         private int _experiencePoints;
 
         public int ExperiencePoints
-        {   
+        {
             get { return _experiencePoints; }
-            set { _experiencePoints = value; OnPropertyChanged("ExperiencePoints"); }
+            set { _experiencePoints = value; OnPropertyChanged(nameof(ExperiencePoints)); }
         }
 
         private int _level;
@@ -44,7 +44,7 @@ namespace Engine.Models
         public int Level
         {
             get { return _level; }
-            set { _level = value; OnPropertyChanged("Level"); }
+            set { _level = value; OnPropertyChanged(nameof(Level)); }
         }
 
         private int _gold;
@@ -52,17 +52,7 @@ namespace Engine.Models
         public int Gold
         {
             get { return _gold; }
-            set { _gold = value; OnPropertyChanged("Gold"); }
-        }
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            set { _gold = value; OnPropertyChanged(nameof(Gold)); }
         }
     }
-
-
 }
