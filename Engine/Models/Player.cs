@@ -10,7 +10,7 @@ namespace Engine.Models
 {
     public class Player : BaseNotificationClass
     {
-
+        #region Properties
         private string _name;
 
         public string Name
@@ -62,7 +62,7 @@ namespace Engine.Models
 
         public List<GameItem> Weapons =>
             Inventory.Where(i => i is Weapon).ToList();
-
+        #endregion
         public Player()
         {
             Inventory = new ObservableCollection<GameItem>();

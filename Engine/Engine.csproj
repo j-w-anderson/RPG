@@ -58,7 +58,9 @@
     <Compile Include="Models\World.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomNumberGenerator.cs" />
+    <Compile Include="ViewModels\GameSession.Monsters.cs" />
     <Compile Include="ViewModels\GameSession.cs" />
+    <Compile Include="ViewModels\GameSession.Quests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Locations\FarmFields.png" />
@@ -75,6 +77,9 @@
     <Resource Include="Images\Monsters\GiantSpider.png" />
     <Resource Include="Images\Monsters\Rat.png" />
     <Resource Include="Images\Monsters\Snake.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ViewModels\GameSession.Movement.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

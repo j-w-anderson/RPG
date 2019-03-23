@@ -22,20 +22,18 @@ namespace RPG
     /// </summary>
     public partial class MainWindow : Window
     {
-        private GameSession _gameSession;
+        private readonly GameSession _gameSession = new GameSession();
 
         public MainWindow()
         {
             InitializeComponent();
-
-            _gameSession = new GameSession();
 
             _gameSession.OnMessageRaised += OnGameMessageRaised;
 
             DataContext = _gameSession;
         }
 
-
+        #region Movement
         private void OnClick_MoveNorth(object sender, RoutedEventArgs e)
         {
             _gameSession.MoveNorth();
@@ -55,7 +53,7 @@ namespace RPG
             _gameSession.MoveSouth();
 
         }
-
+        #endregion
         private void OnClick_AttackMonster(object sender, RoutedEventArgs e)
         {
             _gameSession.AttackCurrentMonster();

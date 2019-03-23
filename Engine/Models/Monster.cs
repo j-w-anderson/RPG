@@ -9,6 +9,7 @@ namespace Engine.Models
 {
     public class Monster : BaseNotificationClass
     {
+        #region Properties
         public string Name { get; private set; }
         public string ImageName { get; set; }
         public int MaximumHitPoints { get; private set; }
@@ -30,14 +31,14 @@ namespace Engine.Models
         public int RewardGold { get; private set; }
 
         public ObservableCollection<ItemQuantity> Inventory { get; set; }
-
+        #endregion
         public Monster(string name, string imageName,
                        int maximumHitPoints, int hitPoints,
                        int minimumDamage, int maximumDamage,
                        int rewardExperiencePoints, int rewardGold)
         {
             Name = name;
-            ImageName = string.Format("/Engine;component/Images/Monsters/{0}", imageName);
+            ImageName = $"/Engine;component/Images/Monsters/{imageName}";
             MaximumHitPoints = maximumHitPoints;
             MinimumDamage = minimumDamage;
             MaximumDamage = maximumDamage;

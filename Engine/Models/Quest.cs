@@ -8,6 +8,7 @@ namespace Engine.Models
 {
     public class Quest
     {
+        #region Properties
         public int ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
@@ -17,7 +18,7 @@ namespace Engine.Models
         public int RewardExperiencePoints { get; set; }
         public int RewardGold { get; set; }
         public List<ItemQuantity> RewardItems { get; set; }
-
+        #endregion
         public Quest(int id,string name,string description,List<ItemQuantity> itemsToComplete,
             int rewardExperiencePoints,int rewardGold,List<ItemQuantity> rewardItems)
         {
