@@ -46,7 +46,8 @@ namespace Engine.ViewModels
             else
             {
                 RaiseMessage("");
-                RaiseMessage($"The {CurrentMonster.Name} killed you.");
+                RaiseMessage($"You have been killed!");
+
                 CurrentLocation = CurrentWorld.LocationAt(0, -1);
                 CurrentPlayer.CompletelyHeal();
             }
