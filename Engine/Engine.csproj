@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions\AbstactAction.cs" />
+    <Compile Include="Actions\AttackWithWeapon.cs" />
+    <Compile Include="Actions\IAction.cs" />
     <Compile Include="BaseNotificationClass.cs" />
     <Compile Include="EventArgs\GameMessageEventArgs.cs" />
     <Compile Include="Factories\ItemFactory.cs" />
@@ -58,7 +61,6 @@
     <Compile Include="Models\Quest.cs" />
     <Compile Include="Models\QuestStatus.cs" />
     <Compile Include="Models\Trader.cs" />
-    <Compile Include="Models\Weapon.cs" />
     <Compile Include="Models\World.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomNumberGenerator.cs" />
@@ -89,5 +91,6 @@
   <ItemGroup>
     <Compile Include="ViewModels\GameSession.Player.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

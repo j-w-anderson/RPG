@@ -17,16 +17,23 @@ namespace Engine.ViewModels
             {
                 if (_currentPlayer != null)
                 {
+                    _currentPlayer.OnActionPerformed -= OnCurrentPlayerPerformedAction;
                     _currentPlayer.OnLevelUp -= OnCurrentPlayerLevelUp;
                     _currentPlayer.OnKilled -= OnCurrentPlayerKilled;
                 }
                 _currentPlayer = value;
                 if (_currentPlayer != null)
                 {
+                    _currentPlayer.OnActionPerformed += OnCurrentPlayerPerformedAction;
                     _currentPlayer.OnLevelUp += OnCurrentPlayerLevelUp;
                     _currentPlayer.OnKilled += OnCurrentPlayerKilled;
                 }
             }
+        }
+
+		private void OnCurrentPlayerPerformedAction(object sender,string result)
+        {
+            RaiseMessage(result);
         }
 
         private void OnCurrentPlayerLevelUp(object sender, System.EventArgs e)

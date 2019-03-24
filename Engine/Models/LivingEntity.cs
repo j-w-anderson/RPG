@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Engine.Models
 {
-    public abstract class LivingEntity : BaseNotificationClass
+    public abstract partial class LivingEntity : BaseNotificationClass
     {
         private string _name;
 
@@ -65,6 +65,24 @@ namespace Engine.Models
                 OnPropertyChanged();
             }
         }
+        private GameItem _currentWeapon;
+        public GameItem CurrentWeapon
+        {
+            get { return _currentWeapon; }
+            set
+            {
+                if(_currentWeapon!=null)
+                {
+                    _currentWeapon.Action.OnActionPerformed -= RaiseActionPerformedEvent;
+                }
+                _currentWeapon = value;
+                if(_currentWeapon!=null)
+                {
+                    _currentWeapon.Action.OnActionPerformed += RaiseActionPerformedEvent;
+                }
+                OnPropertyChanged();
+            }
+        }
 
         public ObservableCollection<GameItem> Inventory { get;  } =
             new ObservableCollection<GameItem>();
@@ -73,11 +91,12 @@ namespace Engine.Models
             new ObservableCollection<GroupedInventoryItem>();
 
 
-        public List<Weapon> Weapons =>
-            Inventory.OfType<Weapon>().ToList();
+        public List<GameItem> Weapons =>
+            Inventory.Where(i => i.Category==GameItem.ItemCategory.Weapon).ToList();
 
         public bool IsDead => CurrentHitPoints <= 0;
 
+        public event EventHandler<string> OnActionPerformed;
         public event EventHandler OnKilled;
 
         protected LivingEntity(string name, int maximumHitPoints,
@@ -88,6 +107,11 @@ namespace Engine.Models
             CurrentHitPoints = currentHitPoints;
             Gold = gold;
             Level = level;
+        }
+
+        public void UseCurrentWeaponOn(LivingEntity target)
+        {
+            CurrentWeapon.PerformAction(this, target);
         }
 
         public void TakeDamage(int damage)
@@ -177,6 +201,11 @@ namespace Engine.Models
         private void RaiseOnKilledEvent()
         {
             OnKilled?.Invoke(this, new System.EventArgs());
+        }
+
+        private void RaiseActionPerformedEvent(object sender, string result)
+        {
+            OnActionPerformed?.Invoke(this, result);
         }
     }
 }

@@ -63,43 +63,18 @@ namespace Engine.ViewModels
 
         public void AttackCurrentMonster()
         {
-            if (CurrentWeapon == null)
+            if (CurrentPlayer.CurrentWeapon == null)
             {
                 RaiseMessage("You must select a weapon, to attack.");
                 return;
             }
 
-            // Determine damage to monster
-            int damageToMonster = RandomNumberGenerator
-                .NumberBetween(CurrentWeapon.MinimumDamage, CurrentWeapon.MaximumDamage + 1);
-            if (damageToMonster == 0)
-            {
-                RaiseMessage($"You missed the {CurrentMonster.Name}.");
-            }
-            else
-            {
-                RaiseMessage($"You hit the {CurrentMonster.Name} for {damageToMonster} hit points!");
-                CurrentMonster.TakeDamage(damageToMonster);
-            }
+            CurrentPlayer.UseCurrentWeaponOn(CurrentMonster);
 
+        
             // If monster is killed, collect rewards and loot
             if (CurrentMonster.IsDead)
             {
-                //RaiseMessage("");
-                //RaiseMessage($"You defeated the {CurrentMonster.Name}!");
-
-                //CurrentPlayer.ExperiencePoints += CurrentMonster.RewardExperiencePoints;
-                //RaiseMessage($"You receive {CurrentMonster.RewardExperiencePoints} experience points.");
-
-                //CurrentPlayer.Gold += CurrentMonster.Gold;
-                //RaiseMessage($"You receive {CurrentMonster.Gold} gold.");
-
-                //foreach (GameItem item in CurrentMonster.Inventory)
-                //{
-                //    CurrentPlayer.AddItemToInventory(item);
-                //    RaiseMessage($"You receive one {item.Name}.");
-                //}
-                // Get another monster to fight
                 GetMonsterAtLocation();
             }
             else
@@ -116,23 +91,6 @@ namespace Engine.ViewModels
                     RaiseMessage($"The {CurrentMonster.Name} hits you for {damageToPlayer} hit points.");
                     CurrentPlayer.TakeDamage(damageToPlayer);
                 }
-                // If player die, move them to home.
-                //if (CurrentPlayer.CurrentHitPoints <= 0)
-                //{
-                //    if (CurrentPlayer.HasAllTheseItems(new List<ItemQuantity> { new ItemQuantity(2001, 1) }))
-                //    {
-                //        CurrentPlayer.RemoveItemFromInventory(CurrentPlayer.Inventory.First(i => i.ItemTypeID == 2001));
-                //        CurrentPlayer.CurrentHitPoints += 10;
-                //        RaiseMessage("You quickly eat a healing herb to gain 10 hit points.");
-                //    }
-                //    else
-                //    {
-                //        RaiseMessage("");
-                //        RaiseMessage($"The {CurrentMonster.Name} killed you.");
-                //        CurrentLocation = CurrentWorld.LocationAt(0, -1);
-                //        CurrentPlayer.CurrentHitPoints = CurrentPlayer.Level * 10;
-                //    }
-                //}
             }
         }
     }

@@ -17,7 +17,6 @@ namespace Engine.ViewModels
         public event EventHandler<GameMessageEventArgs> OnMessageRaised;
 
 
-        public Weapon CurrentWeapon { get; set; }
 
 
         public GameSession()

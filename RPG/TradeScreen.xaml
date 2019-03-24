@@ -88,6 +88,7 @@
             Click="OnClick_Close"
             HorizontalAlignment="Right"
             Width="75"
+            Margin="10"
             Grid.Row="3" Grid.Column="1"/>
     </Grid>
 
