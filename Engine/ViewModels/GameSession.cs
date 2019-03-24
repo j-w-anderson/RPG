@@ -26,7 +26,8 @@ namespace Engine.ViewModels
             {
                 Name = "James",
                 CharacterClass = "Figher",
-                HitPoints = 10,
+                CurrentHitPoints = 10,
+                MaximumHitPoints = 10,
                 ExperiencePoints = 0,
                 Level = 1,
                 Gold = 5

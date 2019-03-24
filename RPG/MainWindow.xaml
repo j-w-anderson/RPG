@@ -49,7 +49,7 @@
                    Grid.Row="1" Grid.Column="1"/>
             <Label Content="Hit points:" 
                    Grid.Row="2"/>
-            <Label Content="{Binding CurrentPlayer.HitPoints}" 
+            <Label Content="{Binding CurrentPlayer.CurrentHitPoints}" 
                    Grid.Row="2" Grid.Column="1"/>
             <Label Content="Gold:" 
                    Grid.Row="3"/>
@@ -120,7 +120,7 @@
                                 HorizontalAlignment="Center"
                                 Grid.Row="2">
                         <TextBlock>Current Hit Points:</TextBlock>
-                        <TextBlock Text="{Binding CurrentMonster.HitPoints}"/>
+                        <TextBlock Text="{Binding CurrentMonster.CurrentHitPoints}"/>
                     </StackPanel>
                 </Grid>
             </Border>
