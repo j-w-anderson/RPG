@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Engine.Factories;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -57,20 +58,21 @@ namespace Engine.Models
             set { _gold = value; OnPropertyChanged(nameof(Gold)); }
         }
 
-        public ObservableCollection<GameItem> Inventory { get; set; }
+        public ItemQuantityCollection Inventory { get; set; }
         public ObservableCollection<QuestStatus> Quests { get; set; }
 
-        public List<GameItem> Weapons =>
-            Inventory.Where(i => i is Weapon).ToList();
+        public List<ItemQuantity> Weapons =>
+            Inventory.Where(i => i.Item is Weapon).ToList();
         #endregion
         public Player()
         {
-            Inventory = new ObservableCollection<GameItem>();
+            Inventory = new ItemQuantityCollection();
             Quests = new ObservableCollection<QuestStatus>();
         }
 
         public void AddItemToInventory(GameItem item)
         {
+
             Inventory.Add(item);
 
             OnPropertyChanged(nameof(Weapons));
@@ -82,11 +84,17 @@ namespace Engine.Models
             OnPropertyChanged(nameof(Weapons));
         }
 
+        public void RemoveItemFromInventory(int itemID)
+        {
+            Inventory.Remove(ItemFactory.CreateGameItem(itemID));
+            OnPropertyChanged(nameof(Weapons));
+        }
+
         public bool HasAllTheseItems(List<ItemQuantity> items)
         {
             foreach (ItemQuantity item in items)
             {
-                if (Inventory.Count(i => i.ItemTypeID == item.ItemID) < item.Quantity)
+                if (Inventory.First(i => i.ItemID == item.ItemID).Quantity < item.Quantity)
                 {
                     return false;
                 }

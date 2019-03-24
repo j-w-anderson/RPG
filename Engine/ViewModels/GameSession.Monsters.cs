@@ -99,7 +99,7 @@ namespace Engine.ViewModels
                 {
                     if (CurrentPlayer.HasAllTheseItems(new List<ItemQuantity> { new ItemQuantity(2001, 1) }))
                     {
-                        CurrentPlayer.RemoveItemFromInventory(CurrentPlayer.Inventory.First(i=>i.ItemTypeID==2001));
+                        CurrentPlayer.RemoveItemFromInventory(2001);
                         CurrentPlayer.HitPoints += 10;
                         RaiseMessage("You quickly eat a healing herb to gain 10 hit points.");
                     }

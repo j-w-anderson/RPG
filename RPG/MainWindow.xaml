@@ -148,10 +148,13 @@
                               HeadersVisibility="Column">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Description"
-                                                Binding="{Binding Name}"
+                                                Binding="{Binding Item.Name}"
                                                 Width="*"/>
+                            <DataGridTextColumn Header="Qnt."
+                                                Binding="{Binding Quantity}"
+                                                Width="Auto"/>
                             <DataGridTextColumn Header="Price"
-                                                Binding="{Binding Price}"
+                                                Binding="{Binding Item.Price}"
                                                 Width="Auto"/>
                         </DataGrid.Columns>
                     </DataGrid>

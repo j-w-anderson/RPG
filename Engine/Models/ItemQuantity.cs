@@ -9,7 +9,10 @@ namespace Engine.Models
     public class ItemQuantity
     {
         public int ItemID { get; set; }
+        public GameItem Item { get; set; }
         public int Quantity { get; set; }
+
+        public string Name => Item.Name;
 
         public ItemQuantity(int itemID, int quantity)
         {
