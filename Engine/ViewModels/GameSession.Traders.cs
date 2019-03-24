@@ -16,7 +16,7 @@ namespace Engine.ViewModels
             set
             {
                 _currentTrader = value;
-                OnPropertyChanged(nameof(CurrentTrader));
+                OnPropertyChanged();
                 OnPropertyChanged(nameof(HasTrader));
             }
         }

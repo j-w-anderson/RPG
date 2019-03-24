@@ -18,7 +18,7 @@ namespace Engine.ViewModels
             set
             {
                 _currentLocation = value;
-                OnPropertyChanged(nameof(CurrentLocation));
+                OnPropertyChanged();
                 OnPropertyChanged(nameof(HasLocationToNorth));
                 OnPropertyChanged(nameof(HasLocationToEast));
                 OnPropertyChanged(nameof(HasLocationToWest));
@@ -31,7 +31,7 @@ namespace Engine.ViewModels
                 CurrentTrader = CurrentLocation.TraderHere;
             }
         }
-        public World CurrentWorld { get; set; }
+        public World CurrentWorld { get; }
 
         public bool HasLocationToNorth =>
             CurrentWorld.LocationAt(

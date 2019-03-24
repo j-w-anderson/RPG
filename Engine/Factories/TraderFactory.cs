@@ -39,7 +39,5 @@ namespace Engine.Factories
             }
             _traders.Add(trader);
         }
-
-
     }
 }
