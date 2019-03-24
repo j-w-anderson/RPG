@@ -19,6 +19,10 @@ namespace Engine.Factories
             BuildWeapon(1003, "Rusty Sword", 20, 2, 4);
             BuildWeapon(1004, "Soldier's Spear", 30, 2, 5);
 
+            BuildWeapon(1501, "Snake fangs", 0, 0, 2);
+            BuildWeapon(1502, "Rat claws", 0, 0, 2);
+            BuildWeapon(1503, "Spider bite", 0, 0, 4);
+
             BuildConsumable(2001, "Healing Herb", 5);
 
             BuildMiscItem(9001, "Snake fang", 1);
@@ -44,7 +48,7 @@ namespace Engine.Factories
         private static void BuildWeapon(int id, string name, int price, int minDmg, int maxDmg)
         {
             GameItem weapon = new GameItem(GameItem.ItemCategory.Weapon,
-                                                id, name, price, true );
+                                                id, name, price, true);
             weapon.Action = new AttackWithWeapon(weapon, minDmg, maxDmg);
             _standardGameItems.Add(weapon);
         }
@@ -52,6 +56,16 @@ namespace Engine.Factories
         public static GameItem CreateGameItem(int itemTypeID)
         {
             GameItem standardItem = _standardGameItems.FirstOrDefault(x => x.ItemTypeID == itemTypeID);
+            if (standardItem != null)
+            {
+                return standardItem.Clone();
+            }
+            return null;
+        }
+        public static GameItem CreateGameItem(string name)
+        {
+            GameItem standardItem = _standardGameItems.FirstOrDefault(i => i.Name == name);
+            
             if (standardItem != null)
             {
                 return standardItem.Clone();
