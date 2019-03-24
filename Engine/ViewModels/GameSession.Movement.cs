@@ -24,8 +24,11 @@ namespace Engine.ViewModels
                 OnPropertyChanged(nameof(HasLocationToWest));
                 OnPropertyChanged(nameof(HasLocationToSouth));
 
+                CompleteQuestsAtLocation();
                 GivePlayerQuestsAtLocation();
                 GetMonsterAtLocation();
+
+                CurrentTrader = CurrentLocation.TraderHere;
             }
         }
         public World CurrentWorld { get; set; }

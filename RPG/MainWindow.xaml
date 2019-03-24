@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModels="clr-namespace:Engine.ViewModels;assembly=Engine"
         d:DataContext="{d:DesignInstance viewModels:GameSession}"
+        WindowStartupLocation="CenterScreen"
         xmlns:local="clr-namespace:RPG"
         mc:Ignorable="d"
         Title="James' Game" Height="768" Width="1024">
@@ -218,6 +219,11 @@
                         Visibility="{Binding HasLocationToSouth, Converter={StaticResource ButtonToVisibility}}"
                         Margin="10"
                         Grid.Row="2" Grid.Column="1" />
+                <Button Content="Trade" 
+                        Click="OnClick_Trade"
+                        Visibility="{Binding HasTrader, Converter={StaticResource ButtonToVisibility}}"
+                        Margin="10"
+                        Grid.Row="1" Grid.Column="1" />
                 <Button Content="East" 
                         Click="OnClick_MoveEast"
                         Visibility="{Binding HasLocationToEast, Converter={StaticResource ButtonToVisibility}}"

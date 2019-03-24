@@ -43,7 +43,6 @@ namespace Engine.ViewModels
         }
 
 
-
         private void RaiseMessage(string message)
         {
             OnMessageRaised?.Invoke(this, new GameMessageEventArgs(message));
