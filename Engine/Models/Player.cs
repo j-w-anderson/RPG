@@ -36,10 +36,14 @@ namespace Engine.Models
         
         public ObservableCollection<QuestStatus> Quests { get; set; }
 
-       #endregion
-        public Player()
+        #endregion
+        public Player(string name, string characterClass,
+            int experiencePoints, int maximumHitPoints,
+            int currentHitPoints, int gold):
+            base(name,maximumHitPoints,currentHitPoints,gold)
         {
-            Inventory = new ObservableCollection<GameItem>();
+            CharacterClass = characterClass;
+            ExperiencePoints = experiencePoints;
             Quests = new ObservableCollection<QuestStatus>();
         }
         

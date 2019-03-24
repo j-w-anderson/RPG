@@ -12,28 +12,20 @@ namespace Engine.ViewModels
 {
     public partial class GameSession : BaseNotificationClass
     {
-        
+
 
         public event EventHandler<GameMessageEventArgs> OnMessageRaised;
-        public Player CurrentPlayer { get; set; }
+
 
         public Weapon CurrentWeapon { get; set; }
-        
+
 
         public GameSession()
         {
-            CurrentPlayer = new Player
-            {
-                Name = "James",
-                CharacterClass = "Figher",
-                CurrentHitPoints = 10,
-                MaximumHitPoints = 10,
-                ExperiencePoints = 0,
-                Level = 1,
-                Gold = 5
-            };
-            
-            if(!CurrentPlayer.Weapons.Any())
+            CurrentPlayer =
+                new Player("James", "Fighter", 0, 10, 10, 10);
+
+            if (!CurrentPlayer.Weapons.Any())
             {
                 CurrentPlayer.AddItemToInventory(ItemFactory.CreateGameItem(1001));
             }

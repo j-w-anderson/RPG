@@ -67,7 +67,7 @@ namespace Engine.ViewModels
                         CurrentPlayer.ExperiencePoints += quest.RewardExperiencePoints;
                         RaiseMessage($"You recieved {quest.RewardExperiencePoints} experience points");
 
-                        CurrentPlayer.Gold += quest.RewardGold;
+                        CurrentPlayer.ReceiveGold(quest.RewardGold);
                         RaiseMessage($"You receive {quest.RewardGold} gold");
 
                         foreach(ItemQuantity itemQuantity in quest.RewardItems)

@@ -86,5 +86,8 @@
   <ItemGroup>
     <Compile Include="ViewModels\GameSession.Movement.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ViewModels\GameSession.Player.cs" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
