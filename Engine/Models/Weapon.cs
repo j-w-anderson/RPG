@@ -15,7 +15,7 @@ namespace Engine.Models
                       string Name,
                       int price,
                       int minDamage,
-                      int maxDamage) : base(itemTypeID, Name, price)
+                      int maxDamage) : base(itemTypeID, Name, price, true)
         {
             MinimumDamage = minDamage;
             MaximumDamage = maxDamage;
