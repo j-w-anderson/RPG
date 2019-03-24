@@ -14,7 +14,10 @@ namespace Engine.Factories
         static ItemFactory()
         {
             _standardGameItems.Add(new Weapon(1001, "Pointy Stick", 1, 1, 2));
-            _standardGameItems.Add(new Weapon(1002, "Rusty Sword", 5, 1, 3));
+            _standardGameItems.Add(new Weapon(1002, "Wooden Club", 3, 1, 3));
+            _standardGameItems.Add(new Weapon(1003, "Rusty Sword", 5, 2, 4));
+            _standardGameItems.Add(new Weapon(1004, "Soldier's Spear", 8, 2, 5));
+            _standardGameItems.Add(new GameItem(2001, "Healing Herb", 5));
             _standardGameItems.Add(new GameItem(9001, "Snake fang", 1));
             _standardGameItems.Add(new GameItem(9002, "Snakeskin", 2));
             _standardGameItems.Add(new GameItem(9003, "Rat tail", 1));

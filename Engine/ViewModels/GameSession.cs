@@ -29,7 +29,7 @@ namespace Engine.ViewModels
                 HitPoints = 10,
                 ExperiencePoints = 0,
                 Level = 1,
-                Gold = 10000
+                Gold = 5
             };
             
             if(!CurrentPlayer.Weapons.Any())

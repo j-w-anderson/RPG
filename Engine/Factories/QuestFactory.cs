@@ -24,9 +24,21 @@ namespace Engine.Factories
             _quests.Add(new Quest(1,
                                 "Clear the herb garden",
                                 "Defeat the snakes in the Herbalist's garden",
-                                itemsToComplete,
-                                25, 10,
-                                rewardItems));
+                                new List<ItemQuantity> { new ItemQuantity(9001, 5) },
+                                10, 10,
+                                new List<ItemQuantity> { new ItemQuantity(2001, 5) }));
+            _quests.Add(new Quest(2,
+                                "Clear the farmer's field",
+                                "Defeat the rats that are in the Farmer's field",
+                                new List<ItemQuantity> { new ItemQuantity(9003, 5) },
+                                20, 20,
+                                new List<ItemQuantity> { new ItemQuantity(1003, 1) }));
+            _quests.Add(new Quest(2,
+                                "Clear the spider forest",
+                                "Defeat the rats that are in the Farmer's field",
+                                new List<ItemQuantity> { new ItemQuantity(9005, 5) },
+                                30, 50,
+                                new List<ItemQuantity> { new ItemQuantity(1004, 1) }));
         }
 
         internal static Quest GetQuestByID(int id)
