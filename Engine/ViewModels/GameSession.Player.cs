@@ -1,4 +1,5 @@
-﻿using Engine.Models;
+﻿using Engine.Factories;
+using Engine.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +35,28 @@ namespace Engine.ViewModels
         public void UseCurrentConsumable()
         {
             CurrentPlayer.UseCurrentConsumable();
+        }
+
+        public void CraftItemUsing(Recipe recipe)
+        {
+            if (CurrentPlayer.HasAllTheseItems(recipe.Ingredients))
+            {
+                CurrentPlayer.RemoveItemsFromInventory(recipe.Ingredients);
+                foreach (ItemQuantity itemQuatity in recipe.OutputItems)
+                {
+                    GameItem outputItem = ItemFactory.CreateGameItem(itemQuatity.ItemID);
+                    RaiseMessage($"You make 1 {outputItem.Name.ToLower()}");
+                    CurrentPlayer.AddItemToInventory(outputItem);
+                }
+            }
+            else
+            {
+                RaiseMessage("You do not have the required ingredients:");
+                foreach(ItemQuantity itemQuantity in recipe.Ingredients)
+                {
+                    RaiseMessage($"  {itemQuantity.Quantity} {ItemFactory.ItemName(itemQuantity.ItemID)}");
+                }
+            }
         }
 
 		private void OnCurrentPlayerPerformedAction(object sender,string result)

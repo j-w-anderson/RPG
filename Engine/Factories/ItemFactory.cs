@@ -66,6 +66,12 @@ namespace Engine.Factories
             _standardGameItems.Add(item);
         }
 
+        public static string ItemName(int itemTypeID)
+        {
+            return _standardGameItems.FirstOrDefault(
+                i => i.ItemTypeID == itemTypeID)?.Name ?? "";
+        }
+
         public static GameItem CreateGameItem(int itemTypeID)
         {
             GameItem standardItem = _standardGameItems.FirstOrDefault(x => x.ItemTypeID == itemTypeID);

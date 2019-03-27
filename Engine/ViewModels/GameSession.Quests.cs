@@ -55,14 +55,8 @@ namespace Engine.ViewModels
                 {
                     if(CurrentPlayer.HasAllTheseItems(quest.ItemsToComplete))
                     {
-                        foreach(ItemQuantity itemQuantity in quest.ItemsToComplete)
-                        {
-                            for(int i=0;i<itemQuantity.Quantity;i++)
-                            {
-                                CurrentPlayer.RemoveItemFromInventory(CurrentPlayer.Inventory.First(
-                                    item => item.ItemTypeID == itemQuantity.ItemID));
-                                                   }
-                                                    }
+                        CurrentPlayer.RemoveItemsFromInventory(quest.ItemsToComplete);
+
                         RaiseMessage("");
                         RaiseMessage($"You completed the '{quest.Name}' quest");
 
