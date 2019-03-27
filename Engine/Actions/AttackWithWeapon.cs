@@ -7,17 +7,18 @@ using System.Threading.Tasks;
 
 namespace Engine.Actions
 {
-    public class AttackWithWeapon : AbstactAction, IAction
+    public class AttackWithWeapon : BaseAction, IAction
     {
         private readonly GameItem _weapon;
         private readonly int _minimumDamage;
         private readonly int _maximumDamage;
 
-        public AttackWithWeapon(GameItem weapon, int minimumDamage, int maximumDamage)
+        public AttackWithWeapon(GameItem itemInUse, int minimumDamage, int maximumDamage)
+            : base(itemInUse)
         {
-            if (weapon.Category != GameItem.ItemCategory.Weapon)
+            if (itemInUse.Category != GameItem.ItemCategory.Weapon)
             {
-                throw new ArgumentException($"{weapon.Name} is not a weapon");
+                throw new ArgumentException($"{itemInUse.Name} is not a weapon");
             }
             if (minimumDamage < 0)
             {
@@ -27,7 +28,7 @@ namespace Engine.Actions
             {
                 throw new ArgumentOutOfRangeException($"maximumDamage {maximumDamage} is less than minimumDamage {minimumDamage}");
             }
-            _weapon = weapon;
+            _weapon = itemInUse;
             _minimumDamage = minimumDamage;
             _maximumDamage = maximumDamage;
         }
