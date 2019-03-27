@@ -10,20 +10,21 @@ namespace Engine.Models
     public class Monster : LivingEntity
     {
         #region Properties
-        public string ImageName { get;  }
+        public string ImageName { get; set; }
  
+        public int MinimumDamage { get; set; }
+        public int MaximumDamage { get; set; }
 
-        public int RewardExperiencePoints { get; }
-
+        public int RewardExperiencePoints { get; private set; }
+ 
         #endregion
-        public Monster(string name, string imageName,
-                       int maximumHitPoints, int currentHitPoints,
-                       int rewardExperiencePoints, int gold) :
-            base(name, maximumHitPoints, currentHitPoints, gold)
+        public Monster(string name, string imageName,int maximumHitPoints,
+                       int rewardExperiencePoints, int rewardGold):
+                   base(name,maximumHitPoints,maximumHitPoints,rewardGold)
+            
         {
             ImageName = $"/Engine;component/Images/Monsters/{imageName}";
             RewardExperiencePoints = rewardExperiencePoints;
-        }
-    
+      }
     }
 }

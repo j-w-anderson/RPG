@@ -23,6 +23,7 @@ namespace Engine.Factories
             BuildWeapon(1502, "Rat claws", 0, 0, 2);
             BuildWeapon(1503, "Spider bite", 0, 0, 4);
 
+            BuildHealingItem(2000, "Granola Bar", 5, 2);
             BuildConsumable(2001, "Healing Herb", 5);
 
             BuildMiscItem(9001, "Snake fang", 1);
@@ -51,6 +52,14 @@ namespace Engine.Factories
                                                 id, name, price, true);
             weapon.Action = new AttackWithWeapon(weapon, minDmg, maxDmg);
             _standardGameItems.Add(weapon);
+        }
+
+        private static void BuildHealingItem(int id,string name, int price,int hitPointsToHeal)
+        {
+            GameItem item = new GameItem(GameItem.ItemCategory.Consumable,
+                id, name, price);
+            item.Action = new Heal(item, hitPointsToHeal);
+            _standardGameItems.Add(item);
         }
 
         public static GameItem CreateGameItem(int itemTypeID)

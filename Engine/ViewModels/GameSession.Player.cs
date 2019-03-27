@@ -31,6 +31,11 @@ namespace Engine.ViewModels
             }
         }
 
+        public void UseCurrentConsumable()
+        {
+            CurrentPlayer.UseCurrentConsumable();
+        }
+
 		private void OnCurrentPlayerPerformedAction(object sender,string result)
         {
             RaiseMessage(result);
