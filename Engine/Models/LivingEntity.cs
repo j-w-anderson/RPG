@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace Engine.Models
 {
-    public abstract partial class LivingEntity : BaseNotificationClass
+     public abstract partial class LivingEntity : BaseNotificationClass
     {
         private string _name;
-
         public string Name
         {
             get { return _name; }
@@ -20,6 +19,7 @@ namespace Engine.Models
                 OnPropertyChanged();
             }
         }
+
         private int _currentHitPoints;
         public int CurrentHitPoints
         {
@@ -106,10 +106,12 @@ namespace Engine.Models
             new ObservableCollection<GameItem>();
         public ObservableCollection<GroupedInventoryItem> GroupedInventory { get; } =
             new ObservableCollection<GroupedInventoryItem>();
+
         public List<GameItem> Weapons =>
             Inventory.Where(i => i.Category == GameItem.ItemCategory.Weapon).ToList();
         public List<GameItem> Consumables =>
             Inventory.Where(i => i.Category == GameItem.ItemCategory.Consumable).ToList();
+
         public bool HasConsumable => Consumables.Any();
         public bool IsDead => CurrentHitPoints <= 0;
 
@@ -124,56 +126,6 @@ namespace Engine.Models
             CurrentHitPoints = currentHitPoints;
             Gold = gold;
             Level = level;
-        }
-
-        public void UseCurrentWeaponOn(LivingEntity target)
-        {
-            CurrentWeapon.PerformAction(this, target);
-        }
-
-        public void UseCurrentConsumable()
-        {
-            CurrentConsumable.PerformAction(this, this);
-            RemoveItemFromInventory(CurrentConsumable);
-        }
-
-        public void TakeDamage(int damage)
-        {
-            CurrentHitPoints -= damage;
-
-            if(IsDead)
-            {
-                CurrentHitPoints = 0;
-                RaiseOnKilledEvent();
-            }
-        }
-
-        public void Heal(int hitPointsToHeal)
-        {
-            CurrentHitPoints += hitPointsToHeal;
-            if(CurrentHitPoints>MaximumHitPoints)
-            {
-                CurrentHitPoints = MaximumHitPoints;
-            }
-        }
-
-        public void CompletelyHeal()
-        {
-            CurrentHitPoints = MaximumHitPoints;
-        }
-
-        public void ReceiveGold(int amount)
-        {
-            Gold += amount;
-        }
-
-        public void SpendGold(int amount)
-        {
-            if(amount > Gold)
-            {
-                throw new ArgumentOutOfRangeException($"{Name} only has {Gold} gold, and cannot spend {amount}.");
-            }
-            Gold -= amount;
         }
 
         public void AddItemToInventory(GameItem item)
