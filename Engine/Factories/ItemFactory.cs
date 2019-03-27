@@ -26,6 +26,10 @@ namespace Engine.Factories
             BuildHealingItem(2000, "Granola Bar", 5, 2);
             BuildConsumable(2001, "Healing Herb", 5);
 
+            BuildMiscItem(3001, "Oats", 1);
+            BuildMiscItem(3002, "Honey", 2);
+            BuildMiscItem(3003, "Raisins", 2);
+
             BuildMiscItem(9001, "Snake fang", 1);
             BuildMiscItem(9002, "Snakeskin", 2);
             BuildMiscItem(9003, "Rat tail", 1);

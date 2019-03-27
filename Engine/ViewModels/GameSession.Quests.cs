@@ -11,6 +11,8 @@ namespace Engine.ViewModels
     public partial class GameSession
     {
 
+        public bool HasQuest => CurrentPlayer.Quests.Any();
+
         private void GivePlayerQuestsAtLocation()
         {
             foreach (Quest quest in CurrentLocation.QuestsAvailableHere)
@@ -37,6 +39,7 @@ namespace Engine.ViewModels
                     RaiseMessage("");
                     RaiseMessage("");
                     RaiseMessage("");
+                    CurrentPlayer.PassNotify(nameof(CurrentPlayer.HasQuest));
                 }
             }
         }
